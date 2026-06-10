@@ -47,7 +47,10 @@ export function Loader({ onDone }: { onDone: () => void }) {
       <div className="relative select-none">
         <div
           className="text-5xl font-bold tracking-tight text-transparent lg:text-7xl"
-          style={{ WebkitTextStroke: "1px rgba(255,255,255,0.5)" }}
+          style={{
+            textShadow:
+              "-1px -1px 0 rgba(255,255,255,0.5), 1px -1px 0 rgba(255,255,255,0.5), -1px 1px 0 rgba(255,255,255,0.5), 1px 1px 0 rgba(255,255,255,0.5)",
+          }}
         >
           periodict
           <span>ai</span>
