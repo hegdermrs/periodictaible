@@ -3,6 +3,7 @@
 import { BackgroundMusic } from "@/components/audio/BackgroundMusic";
 import { AudioControls } from "@/components/audio/AudioControls";
 import { SparkBurst } from "@/components/experience/SparkBurst";
+import { Celebration } from "@/components/progress/Celebration";
 import { ExplorationHydrator } from "@/components/progress/ExplorationHydrator";
 import { ExplorationProgress } from "@/components/progress/ExplorationProgress";
 
@@ -18,6 +19,7 @@ export function ExperienceShell({ children }: ExperienceShellProps) {
       <SparkBurst />
       <AudioControls />
       <ExplorationProgress />
+      <Celebration />
       {children}
     </>
   );

@@ -28,7 +28,23 @@ function HomeContent() {
       <main className="relative flex h-dvh flex-col overflow-hidden">
         <AmbientBackground />
 
+        <div className="pointer-events-none fixed inset-0 z-[1] bg-grid-faded" />
+
+        <header className="pointer-events-none absolute inset-x-0 top-4 z-20 select-none text-center lg:top-8">
+          <h1 className="text-3xl font-bold text-white lg:text-4xl">
+            periodict
+            <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-lime-400 bg-clip-text text-transparent">
+              ai
+            </span>
+            ble
+          </h1>
+          <p className="mt-1 text-sm text-white/40 lg:text-base">
+            The periodic table, but for AI.
+          </p>
+        </header>
+
         <div className="relative z-10 mx-auto flex min-h-0 w-full flex-1 flex-col overflow-visible px-4 py-2 lg:px-12">
+
           <div className="min-h-0 flex-1">
             <PeriodicGrid />
           </div>
@@ -39,14 +55,7 @@ function HomeContent() {
 
           <footer className="shrink-0 border-t border-white/10 py-2 text-center lg:py-3">
             <ExplorationProgress variant="inline" className="mb-2 md:hidden" />
-            <h1 className="text-3xl font-bold text-white lg:text-4xl">
-              periodict
-              <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-lime-400 bg-clip-text text-transparent">
-                ai
-              </span>
-              ble
-            </h1>
-            <p className="mt-1 text-xs text-white/40">
+            <p className="text-xs text-white/40">
               &copy; 2026 AI Execution Accelerator. All rights reserved. Designed by{" "}
               <a
                 href="https://github.com/hegdermrs"
