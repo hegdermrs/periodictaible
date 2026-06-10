@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { AmbientBackground } from "@/components/background/AmbientBackground";
 import { DetailPanel } from "@/components/detail/DetailPanel";
+import { BrowserGate } from "@/components/experience/BrowserGate";
 import { ExperienceShell } from "@/components/experience/ExperienceShell";
 import { Loader } from "@/components/experience/Loader";
 import { ExplorationProgress } from "@/components/progress/ExplorationProgress";
@@ -10,6 +11,14 @@ import { Legend } from "@/components/table/Legend";
 import { PeriodicGrid } from "@/components/table/PeriodicGrid";
 
 export default function Home() {
+  return (
+    <BrowserGate>
+      <HomeContent />
+    </BrowserGate>
+  );
+}
+
+function HomeContent() {
   const [loaded, setLoaded] = useState(false);
   const handleDone = useCallback(() => setLoaded(true), []);
 
