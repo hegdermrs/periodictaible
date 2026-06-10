@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "periodictable",
+  title: "periodictaible",
   description:
-    "48 elements. 8 groups. One system. Interactive map for diagnosing and building with AI.",
+    "The periodic table, but for AI. Explore 48 AI elements across 8 groups.",
   icons: {
     icon: "/favicon.ico",
   },
