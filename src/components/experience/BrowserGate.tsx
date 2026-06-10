@@ -89,14 +89,13 @@ function SafariLogo(props: React.SVGProps<SVGSVGElement>) {
 
 export function BrowserGate({ children }: { children: React.ReactNode }) {
   const blocked = useSyncExternalStore(subscribe, isFirefox, () => false);
-  const [safariCopied, setSafariCopied] = useState(false);
+  const [copied, setCopied] = useState(false);
   const url = typeof window !== "undefined" ? window.location.href : "";
-  const domain = url.replace(/^https?:\/\//, "");
 
-  function handleSafari() {
+  function handleCopy() {
     navigator.clipboard.writeText(url).then(() => {
-      setSafariCopied(true);
-      setTimeout(() => setSafariCopied(false), 2000);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     });
   }
 
@@ -119,14 +118,13 @@ export function BrowserGate({ children }: { children: React.ReactNode }) {
           <p className="mb-2 text-base text-white/80">
             Firefox support is coming soon.
           </p>
-          <p className="mb-8 text-sm text-white/50">
+          <p className="mb-6 text-sm text-white/50">
             For now, the 3D periodic table renders best in Chrome, Edge, or Safari.
-            Open it in one of those browsers:
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
-              href={`googlechrome://${domain}`}
+              href="https://www.google.com/chrome/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors hover:bg-white/10"
@@ -135,7 +133,7 @@ export function BrowserGate({ children }: { children: React.ReactNode }) {
               Chrome
             </a>
             <a
-              href={`microsoft-edge://${domain}`}
+              href="https://www.microsoft.com/edge"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors hover:bg-white/10"
@@ -143,13 +141,24 @@ export function BrowserGate({ children }: { children: React.ReactNode }) {
               <EdgeLogo className="h-6 w-6" />
               Edge
             </a>
-            <button
-              type="button"
-              onClick={handleSafari}
+            <a
+              href="https://www.apple.com/safari/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors hover:bg-white/10"
             >
               <SafariLogo className="h-6 w-6" />
-              {safariCopied ? "Copied!" : "Safari"}
+              Safari
+            </a>
+          </div>
+
+          <div className="mt-6">
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="w-full rounded-xl border border-white/15 bg-white/5 px-6 py-4 text-base font-medium transition-colors hover:bg-white/10"
+            >
+              {copied ? "URL copied!" : "📋 Copy page URL"}
             </button>
           </div>
         </div>
