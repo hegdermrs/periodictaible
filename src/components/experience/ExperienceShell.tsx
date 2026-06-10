@@ -2,7 +2,7 @@
 
 import { BackgroundMusic } from "@/components/audio/BackgroundMusic";
 import { AudioControls } from "@/components/audio/AudioControls";
-import { KonamiEasterEgg } from "@/components/experience/KonamiEasterEgg";
+import { DevMode } from "@/components/experience/DevMode";
 import { SparkBurst } from "@/components/experience/SparkBurst";
 import { Celebration } from "@/components/progress/Celebration";
 import { ExplorationHydrator } from "@/components/progress/ExplorationHydrator";
@@ -18,7 +18,7 @@ export function ExperienceShell({ children }: ExperienceShellProps) {
       <ExplorationHydrator />
       <BackgroundMusic />
       <SparkBurst />
-      <KonamiEasterEgg />
+      <DevMode />
       <AudioControls />
       <ExplorationProgress />
       <Celebration />

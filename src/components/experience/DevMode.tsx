@@ -4,25 +4,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useTableStore } from "@/store/useTableStore";
 
-const KONAMI = [
+const SEQUENCE = [
   "ArrowUp", "ArrowUp",
   "ArrowDown", "ArrowDown",
   "ArrowLeft", "ArrowRight",
   "ArrowLeft", "ArrowRight",
 ];
 
-export function KonamiEasterEgg() {
-  const unlock = useTableStore((s) => s.unlockKonami);
+export function DevMode() {
+  const activate = useTableStore((s) => s.activateDevMode);
   const indexRef = useRef(0);
   const [toast, setToast] = useState(false);
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
-      if (e.key === KONAMI[indexRef.current]) {
+      if (e.key === SEQUENCE[indexRef.current]) {
         indexRef.current++;
-        if (indexRef.current === KONAMI.length) {
+        if (indexRef.current === SEQUENCE.length) {
           indexRef.current = 0;
-          unlock();
+          activate();
           setToast(true);
           setTimeout(() => setToast(false), 3000);
         }
@@ -33,7 +33,7 @@ export function KonamiEasterEgg() {
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [unlock]);
+  }, [activate]);
 
   return (
     <AnimatePresence>
@@ -47,7 +47,7 @@ export function KonamiEasterEgg() {
         >
           <div className="text-center">
             <div className="text-2xl font-bold text-white drop-shadow-lg">
-              🎮 Konami Code activated!
+              🎮 Secret mode activated!
             </div>
             <div className="mt-1 text-sm text-white/60">
               All elements discovered — rainbow mode engaged

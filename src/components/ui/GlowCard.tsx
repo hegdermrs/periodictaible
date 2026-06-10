@@ -49,7 +49,7 @@ export function GlowCard({
       `radial-gradient(circle at ${x}% ${y}%, ${glowColor} 0%, transparent 60%)`,
   );
 
-  const konamiUnlocked = useTableStore((s) => s.konamiUnlocked);
+  const devMode = useTableStore((s) => s.devMode);
 
   const glowing = isHovered || isSelected;
   const active = glowing;
@@ -100,15 +100,15 @@ export function GlowCard({
         opacity: { duration: 0.25 },
         y: { duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] },
       }}
-      className={`group relative isolate w-full cursor-pointer overflow-hidden rounded-xl border text-left outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${konamiUnlocked ? "border-rainbow shadow-rainbow" : ""} ${className}`}
+      className={`group relative isolate w-full cursor-pointer overflow-hidden rounded-xl border text-left outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${devMode ? "border-rainbow shadow-rainbow" : ""} ${className}`}
       style={{
         pointerEvents: "auto",
         borderWidth: 1,
         borderStyle: "solid",
-        borderColor: konamiUnlocked ? undefined : borderColor,
+        borderColor: devMode ? undefined : borderColor,
         background: `#0c0c14`,
-        boxShadow: konamiUnlocked ? undefined : hoverGlow,
-        ...(konamiUnlocked ? {} : { transition: "border-color 0.2s ease, box-shadow 0.2s ease" }),
+        boxShadow: devMode ? undefined : hoverGlow,
+        ...(devMode ? {} : { transition: "border-color 0.2s ease, box-shadow 0.2s ease" }),
         ...style,
       }}
     >
@@ -126,9 +126,9 @@ export function GlowCard({
 
       {isOpened && (
         <div
-          className={`pointer-events-none absolute bottom-0 left-0 right-0 h-0.5 rounded-[inherit] ${konamiUnlocked ? "bar-rainbow" : ""}`}
+          className={`pointer-events-none absolute bottom-0 left-0 right-0 h-0.5 rounded-[inherit] ${devMode ? "bar-rainbow" : ""}`}
           style={
-            konamiUnlocked
+            devMode
               ? undefined
               : {
                   background: `linear-gradient(90deg, transparent, ${color}, transparent)`,

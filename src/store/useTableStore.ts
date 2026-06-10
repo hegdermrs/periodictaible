@@ -16,7 +16,7 @@ interface TableState {
   volume: number;
   openedIds: string[];
   lastBurst: BurstEvent | null;
-  konamiUnlocked: boolean;
+  devMode: boolean;
   selectElement: (id: string | null) => void;
   toggleAudio: () => void;
   setVolume: (v: number) => void;
@@ -24,7 +24,7 @@ interface TableState {
   markAllOpened: () => void;
   hydrateOpened: (ids: string[]) => void;
   triggerBurst: (x: number, y: number, color: string) => void;
-  unlockKonami: () => void;
+  activateDevMode: () => void;
 }
 
 export const useTableStore = create<TableState>((set, get) => ({
@@ -34,7 +34,7 @@ export const useTableStore = create<TableState>((set, get) => ({
   volume: 0.1,
   openedIds: [],
   lastBurst: null,
-  konamiUnlocked: false,
+  devMode: false,
   selectElement: (id) => set({ selectedElementId: id, dimOthers: id !== null }),
   toggleAudio: () => set({ audioEnabled: !get().audioEnabled }),
   setVolume: (v) => set({ volume: v }),
@@ -60,9 +60,9 @@ export const useTableStore = create<TableState>((set, get) => ({
     }),
   triggerBurst: (x, y, color) =>
     set({ lastBurst: { x, y, color, tick: Date.now() } }),
-  unlockKonami: () => {
+  activateDevMode: () => {
     const allIds = ELEMENTS.map((e) => e.id);
-    set({ konamiUnlocked: true, openedIds: allIds });
+    set({ devMode: true, openedIds: allIds });
     saveOpenedIds(allIds);
   },
 }));
