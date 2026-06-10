@@ -27,7 +27,7 @@ export function CurvedColumn({
         left: "50%",
         width: colW,
         marginLeft: -colW / 2,
-        transformStyle: "flat",
+        transformStyle: "preserve-3d",
         transform: `translateX(${curve.translateX}px) translateZ(${curve.translateZ}px) rotateY(${curve.rotateY}deg)`,
       }}
     >
