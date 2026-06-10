@@ -7,6 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { type CSSProperties, type MouseEvent, type ReactNode, useState } from "react";
+import { useTableStore } from "@/store/useTableStore";
 
 interface GlowCardProps {
   children: ReactNode;
@@ -47,6 +48,8 @@ export function GlowCard({
     ([x, y]) =>
       `radial-gradient(circle at ${x}% ${y}%, ${glowColor} 0%, transparent 60%)`,
   );
+
+  const konamiUnlocked = useTableStore((s) => s.konamiUnlocked);
 
   const glowing = isHovered || isSelected;
   const active = glowing;
@@ -97,19 +100,15 @@ export function GlowCard({
         opacity: { duration: 0.25 },
         y: { duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] },
       }}
-      className={`group relative isolate w-full cursor-pointer overflow-hidden rounded-xl border text-left outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${className}`}
+      className={`group relative isolate w-full cursor-pointer overflow-hidden rounded-xl border text-left outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${konamiUnlocked ? "border-rainbow shadow-rainbow" : ""} ${className}`}
       style={{
-        // Re-enable hits on the card itself; the curved stage disables
-        // pointer-events on all wrapper planes (inherited) so they can't
-        // intercept. Inline style, since Tailwind classes lose to inherited
-        // values applied via the cascade on some wrappers.
         pointerEvents: "auto",
         borderWidth: 1,
         borderStyle: "solid",
-        borderColor,
+        borderColor: konamiUnlocked ? undefined : borderColor,
         background: `#0c0c14`,
-        boxShadow: hoverGlow,
-        transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+        boxShadow: konamiUnlocked ? undefined : hoverGlow,
+        ...(konamiUnlocked ? {} : { transition: "border-color 0.2s ease, box-shadow 0.2s ease" }),
         ...style,
       }}
     >
@@ -127,10 +126,14 @@ export function GlowCard({
 
       {isOpened && (
         <div
-          className="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5 rounded-[inherit]"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
-          }}
+          className={`pointer-events-none absolute bottom-0 left-0 right-0 h-0.5 rounded-[inherit] ${konamiUnlocked ? "bar-rainbow" : ""}`}
+          style={
+            konamiUnlocked
+              ? undefined
+              : {
+                  background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
+                }
+          }
         />
       )}
 

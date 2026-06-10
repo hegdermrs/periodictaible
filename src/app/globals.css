@@ -135,6 +135,50 @@ body {
   -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
 }
 
+@keyframes rainbow-border {
+  0% { border-color: #ef4444; }
+  16% { border-color: #f59e0b; }
+  33% { border-color: #eab308; }
+  50% { border-color: #22c55e; }
+  66% { border-color: #3b82f6; }
+  83% { border-color: #a855f7; }
+  100% { border-color: #ef4444; }
+}
+
+@keyframes rainbow-glow {
+  0% { box-shadow: 0 0 22px rgba(239,68,68,0.4), inset 0 0 18px rgba(239,68,68,0.1); }
+  16% { box-shadow: 0 0 22px rgba(245,158,11,0.4), inset 0 0 18px rgba(245,158,11,0.1); }
+  33% { box-shadow: 0 0 22px rgba(234,179,8,0.4), inset 0 0 18px rgba(234,179,8,0.1); }
+  50% { box-shadow: 0 0 22px rgba(34,197,94,0.4), inset 0 0 18px rgba(34,197,94,0.1); }
+  66% { box-shadow: 0 0 22px rgba(59,130,246,0.4), inset 0 0 18px rgba(59,130,246,0.1); }
+  83% { box-shadow: 0 0 22px rgba(168,85,247,0.4), inset 0 0 18px rgba(168,85,247,0.1); }
+  100% { box-shadow: 0 0 22px rgba(239,68,68,0.4), inset 0 0 18px rgba(239,68,68,0.1); }
+}
+
+@keyframes rainbow-bar {
+  0% { background: linear-gradient(90deg, transparent, #ef4444, transparent); }
+  16% { background: linear-gradient(90deg, transparent, #f59e0b, transparent); }
+  33% { background: linear-gradient(90deg, transparent, #eab308, transparent); }
+  50% { background: linear-gradient(90deg, transparent, #22c55e, transparent); }
+  66% { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+  83% { background: linear-gradient(90deg, transparent, #a855f7, transparent); }
+  100% { background: linear-gradient(90deg, transparent, #ef4444, transparent); }
+}
+
+.border-rainbow {
+  animation: rainbow-border 3s linear infinite;
+  transition: none !important;
+}
+
+.shadow-rainbow {
+  animation: rainbow-glow 3s linear infinite;
+  transition: none !important;
+}
+
+.bar-rainbow {
+  animation: rainbow-bar 3s linear infinite;
+}
+
 ::selection {
   background: rgba(56, 189, 248, 0.3);
   color: white;

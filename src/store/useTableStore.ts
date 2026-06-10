@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { saveOpenedIds } from "@/store/explorationPersist";
+import { ELEMENTS } from "@/core/data/elements";
 
 interface BurstEvent {
   x: number;
@@ -15,12 +16,15 @@ interface TableState {
   volume: number;
   openedIds: string[];
   lastBurst: BurstEvent | null;
+  konamiUnlocked: boolean;
   selectElement: (id: string | null) => void;
   toggleAudio: () => void;
   setVolume: (v: number) => void;
   markOpened: (id: string) => void;
+  markAllOpened: () => void;
   hydrateOpened: (ids: string[]) => void;
   triggerBurst: (x: number, y: number, color: string) => void;
+  unlockKonami: () => void;
 }
 
 export const useTableStore = create<TableState>((set, get) => ({
@@ -30,6 +34,7 @@ export const useTableStore = create<TableState>((set, get) => ({
   volume: 0.1,
   openedIds: [],
   lastBurst: null,
+  konamiUnlocked: false,
   selectElement: (id) => set({ selectedElementId: id, dimOthers: id !== null }),
   toggleAudio: () => set({ audioEnabled: !get().audioEnabled }),
   setVolume: (v) => set({ volume: v }),
@@ -37,6 +42,13 @@ export const useTableStore = create<TableState>((set, get) => ({
     set((state) => {
       if (state.openedIds.includes(id)) return state;
       const openedIds = [...state.openedIds, id];
+      saveOpenedIds(openedIds);
+      return { openedIds };
+    }),
+  markAllOpened: () =>
+    set((state) => {
+      const allIds = ELEMENTS.map((e) => e.id);
+      const openedIds = [...new Set([...state.openedIds, ...allIds])];
       saveOpenedIds(openedIds);
       return { openedIds };
     }),
@@ -48,4 +60,9 @@ export const useTableStore = create<TableState>((set, get) => ({
     }),
   triggerBurst: (x, y, color) =>
     set({ lastBurst: { x, y, color, tick: Date.now() } }),
+  unlockKonami: () => {
+    const allIds = ELEMENTS.map((e) => e.id);
+    set({ konamiUnlocked: true, openedIds: allIds });
+    saveOpenedIds(allIds);
+  },
 }));
