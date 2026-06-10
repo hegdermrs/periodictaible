@@ -103,14 +103,10 @@ body {
 .table-3d-column {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform;
-  /* Anti-aliasing gap fix */
-  outline: 1px solid transparent; 
 }
 
 .table-3d-stage {
   transform-style: preserve-3d;
-  will-change: transform;
 }
 
 @keyframes gentle-sway {

@@ -3,6 +3,14 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+function OutlineText({ className }: { className?: string }) {
+  return (
+    <span className={className}>
+      periodict<span>ai</span>ble
+    </span>
+  );
+}
+
 export function Loader({ onDone }: { onDone: () => void }) {
   const [progress, setProgress] = useState(0);
   const [exiting, setExiting] = useState(false);
@@ -45,18 +53,27 @@ export function Loader({ onDone }: { onDone: () => void }) {
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="relative select-none">
-        <div
-          className="text-5xl font-bold tracking-tight text-transparent lg:text-7xl"
-          style={{
-            textShadow:
-              "-1px -1px 0 rgba(255,255,255,0.5), 1px -1px 0 rgba(255,255,255,0.5), -1px 1px 0 rgba(255,255,255,0.5), 1px 1px 0 rgba(255,255,255,0.5)",
-          }}
-        >
-          periodict
-          <span>ai</span>
-          ble
+        {/* Outline — 4 offset layers create a uniform border */}
+        <div className="relative text-5xl font-bold tracking-tight lg:text-7xl">
+          <div aria-hidden className="absolute inset-0 text-white/35" style={{ transform: "translate(-1px, 0)" }}>
+            <OutlineText />
+          </div>
+          <div aria-hidden className="absolute inset-0 text-white/35" style={{ transform: "translate(1px, 0)" }}>
+            <OutlineText />
+          </div>
+          <div aria-hidden className="absolute inset-0 text-white/35" style={{ transform: "translate(0, -1px)" }}>
+            <OutlineText />
+          </div>
+          <div aria-hidden className="absolute inset-0 text-white/35" style={{ transform: "translate(0, 1px)" }}>
+            <OutlineText />
+          </div>
+          {/* Transparent base (invisible — just holds the position) */}
+          <div className="text-transparent" aria-hidden>
+            <OutlineText />
+          </div>
         </div>
 
+        {/* Fill layer — clips from left to right as progress increases */}
         <div
           className="absolute inset-0 overflow-hidden"
           style={{
