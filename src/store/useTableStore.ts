@@ -31,7 +31,7 @@ export const useTableStore = create<TableState>((set, get) => ({
   selectedElementId: null,
   dimOthers: false,
   audioEnabled: true,
-  volume: 0.1,
+  volume: 0.06,
   openedIds: [],
   lastBurst: null,
   devMode: false,
