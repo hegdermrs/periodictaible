@@ -22,7 +22,7 @@ export function CurvedColumn({
 
   return (
     <div
-      className="table-3d-column absolute top-0"
+      className="table-3d-column absolute top-0 h-full"
       style={{
         left: "50%",
         width: colW,

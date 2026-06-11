@@ -12,14 +12,10 @@ interface BurstEvent {
 interface TableState {
   selectedElementId: string | null;
   dimOthers: boolean;
-  audioEnabled: boolean;
-  volume: number;
   openedIds: string[];
   lastBurst: BurstEvent | null;
   devMode: boolean;
   selectElement: (id: string | null) => void;
-  toggleAudio: () => void;
-  setVolume: (v: number) => void;
   markOpened: (id: string) => void;
   markAllOpened: () => void;
   hydrateOpened: (ids: string[]) => void;
@@ -27,17 +23,13 @@ interface TableState {
   activateDevMode: () => void;
 }
 
-export const useTableStore = create<TableState>((set, get) => ({
+export const useTableStore = create<TableState>((set) => ({
   selectedElementId: null,
   dimOthers: false,
-  audioEnabled: true,
-  volume: 0.06,
   openedIds: [],
   lastBurst: null,
   devMode: false,
   selectElement: (id) => set({ selectedElementId: id, dimOthers: id !== null }),
-  toggleAudio: () => set({ audioEnabled: !get().audioEnabled }),
-  setVolume: (v) => set({ volume: v }),
   markOpened: (id) =>
     set((state) => {
       if (state.openedIds.includes(id)) return state;

@@ -1,7 +1,7 @@
 import type { AIElement } from "@/core/types";
 
 export const ELEMENTS: AIElement[] = [
-  // G1 — Fundamentals
+  // G1 - AI Basics
   {
     id: "token",
     symbol: "TK",
@@ -45,7 +45,7 @@ export const ELEMENTS: AIElement[] = [
         url: "https://www.ibm.com/think/topics/large-language-models",
       },
     ],
-    relatedIds: ["token", "prompt", "parameters"],
+    relatedIds: ["token", "prompt", "ai-cost"],
   },
   {
     id: "prompt",
@@ -68,7 +68,7 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["system-prompt", "layer-diagnosis", "temperature"],
+    relatedIds: ["system-prompt", "problem-layer", "temperature"],
   },
   {
     id: "context-window",
@@ -114,33 +114,33 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["parameters", "prompt", "evals"],
+    relatedIds: ["ai-cost", "prompt", "evals"],
   },
   {
-    id: "parameters",
-    symbol: "PM",
-    name: "Parameters",
+    id: "ai-cost",
+    symbol: "CT",
+    name: "AI Cost",
     group: 1,
     row: 6,
     index: 6,
-    tagline: "How large and powerful a model is",
+    tagline: "What your AI work will cost",
     whatItIs:
-      "Parameters are a way to measure how big and complex a model is — roughly how many connections live inside its brain. Larger models can often handle harder reasoning, longer instructions, and trickier tasks. They also tend to cost more and run slower.",
+      "AI cost is the money you spend when models read your input, write answers, search files, use tools, or run many steps in a workflow. Small tests may feel free, but busy automations can add up quickly.",
     whenToUse:
-      "Look at parameters when you are comparing model tiers and deciding whether a bigger model is worth the extra money for your specific job.",
+      "Think about cost before you launch anything that runs often, touches many customers, or loops through long documents.",
     watchOut:
-      "Bigger is not automatically better. Many everyday business tasks — sorting, tagging, short replies, simple summaries — work perfectly well on smaller, cheaper models.",
+      "The biggest model is not always the best business choice. Use cheaper models for simple jobs and save expensive models for the work that really needs them.",
     links: [
       {
-        label: "Model sizes guide",
-        url: "https://ai.google.dev/gemini-api/docs/models",
-        icon: "simple-icons/google",
+        label: "OpenAI pricing",
+        url: "https://platform.openai.com/docs/pricing",
+        icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["model", "temperature", "loop-engineering"],
+    relatedIds: ["model", "temperature", "roi"],
   },
 
-  // G2 — Data & Knowledge
+  // G2 - Your Data
   {
     id: "training-data",
     symbol: "TD",
@@ -276,7 +276,7 @@ export const ELEMENTS: AIElement[] = [
     relatedIds: ["rag", "training-data", "model"],
   },
 
-  // G3 — Intelligence Layer
+  // G3 - Quality & Safety
   {
     id: "system-prompt",
     symbol: "SP",
@@ -298,7 +298,7 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["prompt", "guardrails", "layer-diagnosis"],
+    relatedIds: ["prompt", "guardrails", "problem-layer"],
   },
   {
     id: "memory",
@@ -347,27 +347,26 @@ export const ELEMENTS: AIElement[] = [
     relatedIds: ["model", "agent", "use-case"],
   },
   {
-    id: "rlhf",
-    symbol: "RH",
-    name: "RLHF",
+    id: "hallucination",
+    symbol: "HA",
+    name: "Hallucination",
     group: 3,
     row: 4,
     index: 16,
-    tagline: "Trained with human feedback",
+    tagline: "When AI sounds sure but is wrong",
     whatItIs:
-      "RLHF stands for Reinforcement Learning from Human Feedback. In simple terms, humans rate model answers during training, and the system learns which responses people prefer. That is a big reason modern AI feels more helpful and conversational than older systems.",
+      "A hallucination is when AI gives an answer that sounds confident but is made up, outdated, or not supported by the facts you gave it.",
     whenToUse:
-      "This concept helps when you are comparing raw base models to polished consumer products, or when you are discussing why some models feel safer or more natural.",
+      "Remember this whenever AI writes facts, numbers, legal text, medical text, customer promises, or anything your business will rely on.",
     watchOut:
-      "Helpful tone does not mean correct facts. RLHF shapes behavior and style; it does not replace your company data, testing, or review process.",
+      "A polished answer is not the same as a true answer. Ask for sources, use your own knowledge base, and keep humans in the loop for important decisions.",
     links: [
       {
-        label: "RLHF overview",
-        url: "https://www.anthropic.com/research",
-        icon: "simple-icons/anthropic",
+        label: "AI risk guide",
+        url: "https://www.nist.gov/itl/ai-risk-management-framework",
       },
     ],
-    relatedIds: ["guardrails", "evals", "model"],
+    relatedIds: ["guardrails", "evals", "knowledge-base"],
   },
   {
     id: "guardrails",
@@ -412,10 +411,10 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["guardrails", "loop-engineering", "workflow"],
+    relatedIds: ["guardrails", "roi", "workflow"],
   },
 
-  // G4 — Models & Providers
+  // G4 - AI Engines
   {
     id: "gpt",
     symbol: "GP",
@@ -423,13 +422,13 @@ export const ELEMENTS: AIElement[] = [
     group: 4,
     row: 1,
     index: 19,
-    tagline: "OpenAI's flagship model family",
+    tagline: "OpenAI's general-purpose AI line",
     whatItIs:
-      "GPT is OpenAI's family of language models and one of the most widely used AI engines in the world. It is strong at writing, analysis, coding, and general business tasks, and many apps already know how to connect to it.",
+      "GPT is OpenAI's model family for writing, reasoning, coding, vision, and tool-using workflows. The current lineup includes larger frontier models for complex work and smaller variants for faster, lower-cost production tasks.",
     whenToUse:
-      "GPT is a solid default when you want a popular, well-supported model with lots of tools, tutorials, and integrations around it.",
+      "Use GPT when you want a well-supported default with strong SDKs, tool calling, retrieval, computer-use options, and a large ecosystem of examples.",
     watchOut:
-      "You do not always need the newest or largest GPT tier. Smaller models are often enough for everyday tasks and can save real money at scale.",
+      "Do not automatically choose the biggest GPT model. Route routine work to smaller models and save frontier models for tasks where the extra reasoning actually changes the result.",
     links: [
       {
         label: "ChatGPT",
@@ -451,11 +450,11 @@ export const ELEMENTS: AIElement[] = [
     group: 4,
     row: 2,
     index: 20,
-    tagline: "Strong with long documents",
+    tagline: "Careful reasoning and long-context work",
     whatItIs:
-      "Claude is Anthropic's AI model, known for careful reasoning, clear writing, and handling large documents in one pass. It tends to follow detailed instructions well and is popular for analysis, summarizing, and step-by-step work.",
+      "Claude is Anthropic's model family, currently centered on Opus, Sonnet, and Haiku tiers. It is especially useful for long-context analysis, agentic coding, writing, and instruction-heavy workflows.",
     whenToUse:
-      "Claude is a strong pick when your work involves long reports, contracts, research, or nuanced instructions that need steady follow-through.",
+      "Use Claude when you need steady reasoning across large documents, careful tone, codebase work, or high-autonomy agent tasks where following constraints matters.",
     watchOut:
       "A capable model will not fix missing company files, weak prompts, or broken integrations. If answers lack your business facts, the problem is usually a data layer issue.",
     links: [
@@ -479,11 +478,11 @@ export const ELEMENTS: AIElement[] = [
     group: 4,
     row: 3,
     index: 21,
-    tagline: "Google's AI family",
+    tagline: "Google's multimodal AI stack",
     whatItIs:
-      "Gemini is Google's AI model family. It handles text and images, and it is designed to fit into Google's wider ecosystem when your team already uses Gmail, Docs, Drive, and Google Cloud.",
+      "Gemini is Google's AI model family for text, images, audio, video, coding, and agentic workflows. Recent Gemini API models include Pro, Flash, Flash-Lite, Live, image, video, and translation variants.",
     whenToUse:
-      "Gemini makes the most sense when your business already runs on Google tools and you want AI inside that existing workflow.",
+      "Use Gemini when your work already lives in Google Cloud or Google Workspace, or when you need multimodal features such as live audio, visual generation, or high-volume Flash-style workloads.",
     watchOut:
       "Not every Gemini feature is available in every country, account type, or product yet. Check what is actually turned on in your setup before planning around it.",
     links: [
@@ -507,11 +506,11 @@ export const ELEMENTS: AIElement[] = [
     group: 4,
     row: 4,
     index: 22,
-    tagline: "Strong reasoning at lower cost",
+    tagline: "Cost-aware reasoning and coding",
     whatItIs:
-      "DeepSeek is an AI provider known for solid reasoning, coding help, and competitive pricing compared with many premium models. It has become a practical option for teams that want quality without a premium bill on every request.",
+      "DeepSeek is an AI provider with chat and reasoning models that can be accessed through OpenAI-compatible and Anthropic-compatible API formats. Its newer v4 models make it easier to test DeepSeek inside existing agent and coding-tool setups.",
     whenToUse:
-      "Consider DeepSeek when you need capable answers at scale and cost control matters as much as raw performance.",
+      "Consider DeepSeek when you want another capable reasoning or coding backend and your system is already designed to swap providers behind a common API layer.",
     watchOut:
       "Before sending private business data anywhere, check where requests are processed, what the provider allows, and whether your industry has extra rules.",
     links: [
@@ -527,11 +526,11 @@ export const ELEMENTS: AIElement[] = [
     group: 4,
     row: 5,
     index: 23,
-    tagline: "Fast, lean, and efficient",
+    tagline: "Open-weight and efficient model options",
     whatItIs:
-      "Mistral offers high-performance models tuned for speed and efficiency. They are built for teams that need lots of AI responses without paying premium prices on every single request.",
+      "Mistral offers open and commercial models across generalist, reasoning, coding, document, speech, and OCR use cases. Its lineup is useful when you care about deployment control, European provider options, or efficient high-volume inference.",
     whenToUse:
-      "Mistral fits high-volume work like email sorting, tagging, routing, classification, and short summaries where latency and cost matter.",
+      "Use Mistral for classification, extraction, coding, document processing, or self-hosting/open-weight scenarios where model control matters as much as raw benchmark scores.",
     watchOut:
       "The smallest models are not the right tool for huge, complex documents or deep multi-step analysis. Match model size to the actual job.",
     links: [
@@ -541,30 +540,33 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/mistralai",
       },
     ],
-    relatedIds: ["deepseek", "gpt", "parameters"],
+    relatedIds: ["deepseek", "gpt", "ai-cost"],
   },
   {
-    id: "grok",
-    symbol: "GK",
-    name: "Grok",
+    id: "model-router",
+    symbol: "MR",
+    name: "Model Router",
     group: 4,
     row: 6,
     index: 24,
-    tagline: "xAI's conversational model",
+    tagline: "Send each job to the right model",
     whatItIs:
-      "Grok is xAI's language model and chat product. It is another provider option in the market, with its own style, features, and ecosystem ties through X and xAI.",
+      "A model router is a simple rule or system that chooses which AI model should handle each task. Easy jobs can go to cheaper models, while hard jobs go to stronger ones.",
     whenToUse:
-      "Grok is worth considering when you are already in the X or xAI ecosystem and want that model available for certain conversational or research-style tasks.",
+      "Use a router when one business workflow uses many kinds of AI work, such as quick sorting, long writing, image reading, and deep reasoning.",
     watchOut:
-      "A distinctive personality is not a reason to rebuild your whole business stack. Choose providers based on fit, cost, data needs, and integrations — not hype.",
+      "Bad routing can make answers worse or costs higher. Start with simple rules, watch the results, and improve the routing slowly.",
     links: [
-      { label: "xAI", url: "https://x.ai", icon: "simple-icons/x" },
-      { label: "Grok on X", url: "https://x.com/i/grok", icon: "simple-icons/x" },
+      {
+        label: "OpenAI models",
+        url: "https://platform.openai.com/docs/models",
+        icon: "simple-icons/openai",
+      },
     ],
-    relatedIds: ["gpt", "claude", "ai-stack"],
+    relatedIds: ["gpt", "claude", "ai-cost"],
   },
 
-  // G5 — Infrastructure
+  // G5 - Connections
   {
     id: "api",
     symbol: "AP",
@@ -586,7 +588,7 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["endpoint", "sdk", "function-calling"],
+    relatedIds: ["api-key", "sdk", "function-calling"],
   },
   {
     id: "webhooks",
@@ -612,27 +614,27 @@ export const ELEMENTS: AIElement[] = [
     relatedIds: ["workflow", "api", "orchestration"],
   },
   {
-    id: "endpoint",
-    symbol: "EP",
-    name: "Endpoint",
+    id: "api-key",
+    symbol: "AK",
+    name: "API Key",
     group: 5,
     row: 3,
     index: 27,
-    tagline: "The exact address for a service",
+    tagline: "The password your app uses",
     whatItIs:
-      "An endpoint is the specific web address where an API accepts a request. Chat, image generation, embeddings, and search often each have their own endpoint, even from the same provider.",
+      "An API key is a secret code that lets your app use an AI service. It tells the provider who is making the request and which account should be billed.",
     whenToUse:
-      "Endpoints matter when developers connect your product to the right service for each job and keep those connections organized as the system grows.",
+      "You need API keys when you connect AI to your website, app, automation, chatbot, or internal tool.",
     watchOut:
-      "Hardcoded URLs can break when providers release new versions or retire old ones. Keep documentation handy and review integrations after upgrades.",
+      "Never paste API keys into public websites, screenshots, or shared code. If a key leaks, someone else may use your account and spend your money.",
     links: [
       {
-        label: "API endpoints",
-        url: "https://platform.openai.com/docs/api-reference/introduction",
+        label: "OpenAI API keys",
+        url: "https://platform.openai.com/api-keys",
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["api", "sdk", "mcp"],
+    relatedIds: ["api", "sdk", "ai-cost"],
   },
   {
     id: "mcp",
@@ -641,11 +643,11 @@ export const ELEMENTS: AIElement[] = [
     group: 5,
     row: 4,
     index: 28,
-    tagline: "One standard way to plug in tools",
+    tagline: "A shared connector standard for AI",
     whatItIs:
-      "MCP stands for Model Context Protocol. It is an open standard that lets AI connect to tools and data sources in a consistent way, so builders do not have to create a separate custom connector for every app.",
+      "MCP stands for Model Context Protocol. It is an open standard for connecting AI apps and agents to external systems such as files, databases, search, business tools, and reusable workflows.",
     whenToUse:
-      "MCP becomes useful when you are connecting AI to many tools and want one shared pattern instead of dozens of one-off integrations.",
+      "MCP becomes useful when you want one integration pattern that can work across multiple AI clients, developer tools, and internal systems instead of rebuilding every connector from scratch.",
     watchOut:
       "A standard connector does not replace good product design. You still need to decide which tools matter, what access they get, and what the workflow should do.",
     links: [
@@ -697,10 +699,10 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/openai",
       },
     ],
-    relatedIds: ["api", "endpoint", "cursor"],
+    relatedIds: ["api", "api-key", "cursor"],
   },
 
-  // G6 — Agents & Automation
+  // G6 - AI Workers
   {
     id: "agent",
     symbol: "AG",
@@ -812,7 +814,7 @@ export const ELEMENTS: AIElement[] = [
         url: "https://www.ibm.com/think/topics/human-in-the-loop",
       },
     ],
-    relatedIds: ["guardrails", "workflow", "loop-engineering"],
+    relatedIds: ["guardrails", "workflow", "roi"],
   },
   {
     id: "tool-use",
@@ -838,7 +840,7 @@ export const ELEMENTS: AIElement[] = [
     relatedIds: ["function-calling", "mcp", "agent"],
   },
 
-  // G7 — No-Code Builders
+  // G7 - Builder Tools
   {
     id: "zapier",
     symbol: "ZP",
@@ -860,29 +862,30 @@ export const ELEMENTS: AIElement[] = [
         icon: "simple-icons/zapier",
       },
     ],
-    relatedIds: ["claude-code", "workflow", "webhooks"],
+    relatedIds: ["make", "workflow", "webhooks"],
   },
   {
-    id: "claude-code",
-    symbol: "CC",
-    name: "Claude Code",
+    id: "make",
+    symbol: "MK",
+    name: "Make",
     group: 7,
     row: 2,
     index: 38,
-    tagline: "AI coding agent in your terminal",
+    tagline: "Visual workflows with more control",
     whatItIs:
-      "Claude Code is Anthropic's agentic coding tool that works directly in your terminal. It reads your codebase, edits files, runs commands, and completes complex software tasks across your entire project.",
+      "Make is a visual automation builder. It lets you connect apps, branch logic, transform data, and add AI steps without starting from a blank code file.",
     whenToUse:
-      "Use Claude Code when you need a powerful AI pair programmer that understands full project context and can autonomously complete multi-step development tasks.",
+      "Use Make when your automation has more steps or decisions than a simple trigger-and-action flow.",
     watchOut:
-      "Agentic coding tools can make sweeping changes quickly. Always review diffs before committing, keep tests passing, and maintain good version control hygiene.",
+      "Visual workflows can still become messy. Name each step clearly and test with real examples before trusting it with customers.",
     links: [
       {
-        label: "Claude Code",
-        url: "https://docs.anthropic.com/en/docs/claude-code",
+        label: "Make",
+        url: "https://www.make.com",
+        icon: "simple-icons/integromat",
       },
     ],
-    relatedIds: ["cursor", "sdk", "agent"],
+    relatedIds: ["zapier", "workflow", "webhooks"],
   },
   {
     id: "n8n",
@@ -901,51 +904,45 @@ export const ELEMENTS: AIElement[] = [
     links: [
       { label: "n8n", url: "https://n8n.io", icon: "simple-icons/n8n" },
     ],
-    relatedIds: ["openclaw", "workflow", "api"],
+    relatedIds: ["flowise", "workflow", "api"],
   },
   {
-    id: "openclaw",
-    symbol: "OC",
-    name: "OpenClaw",
+    id: "voiceflow",
+    symbol: "VF",
+    name: "Voiceflow",
     group: 7,
     row: 4,
     index: 40,
-    tagline: "Open-source AI agent framework",
+    tagline: "Build chat and voice agents",
     whatItIs:
-      "OpenClaw is an open-source framework for building and orchestrating AI agents. It gives you full control over agent loops, tool integration, memory, and multi-agent coordination without locking you into a proprietary platform.",
+      "Voiceflow is a builder for customer-facing AI agents. Teams can design conversations, add a knowledge base, connect tools, test the agent, and publish it to chat or voice channels.",
     whenToUse:
-      "OpenClaw fits teams that want complete transparency and control over their agent architecture and prefer self-hosted, auditable infrastructure over managed services.",
+      "Use Voiceflow when you want a support, sales, booking, or FAQ agent that regular customers will talk to.",
     watchOut:
-      "Open-source agent frameworks evolve rapidly and documentation may lag. Budget time for reading source code, joining community channels, and keeping dependencies up to date.",
+      "Customer agents need testing. Check bad questions, angry users, missing data, and handoff to a human before launch.",
     links: [
-      {
-        label: "OpenClaw",
-        url: "https://github.com/openclaw",
-      },
+      { label: "Voiceflow", url: "https://www.voiceflow.com" },
     ],
-    relatedIds: ["agent", "multi-agent", "tool-use"],
+    relatedIds: ["agent", "knowledge-base", "human-in-the-loop"],
   },
   {
-    id: "hermes-agent",
-    symbol: "HR",
-    name: "Hermes Agent",
+    id: "flowise",
+    symbol: "FL",
+    name: "Flowise",
     group: 7,
     row: 5,
     index: 41,
-    tagline: "Multi-agent orchestration platform",
+    tagline: "Visual builder for AI agents",
     whatItIs:
-      "Hermes Agent is a platform for building, deploying, and managing teams of AI agents that collaborate on complex tasks. It handles agent-to-agent communication, task delegation, shared memory, and result aggregation.",
+      "Flowise is an open-source visual platform for building AI agents and LLM workflows. It supports chatflows, agent flows, tools, memory, evaluations, and deployment options.",
     whenToUse:
-      "Use Hermes Agent when a single agent is not enough and you need a coordinated swarm of specialized agents working together on a multi-step problem.",
+      "Use Flowise when you want more control than a simple automation tool but still want a visual builder instead of writing everything from scratch.",
     watchOut:
-      "More agents do not guarantee better results. Start with the smallest number of well-scoped agents, then add more only when task decomposition truly requires it.",
+      "More control also means more responsibility. Plan hosting, security, logs, and maintenance before using it for important business work.",
     links: [
-      {
-        label: "Hermes Agent",
-        url: "https://github.com/NousResearch/Hermes-Function-Calling",
-      },
+      { label: "Flowise", url: "https://flowiseai.com" },
     ],
-    relatedIds: ["multi-agent", "orchestration", "agent"],
+    relatedIds: ["agent", "workflow", "mcp"],
   },
   {
     id: "cursor",
@@ -967,7 +964,7 @@ export const ELEMENTS: AIElement[] = [
     relatedIds: ["sdk", "api", "ai-stack"],
   },
 
-  // G8 — Business Layer
+  // G8 - Business Decisions
   {
     id: "use-case",
     symbol: "UC",
@@ -988,58 +985,49 @@ export const ELEMENTS: AIElement[] = [
         url: "https://www.ibm.com/think/topics/artificial-intelligence-business-use-cases",
       },
     ],
-    relatedIds: ["loop-engineering", "ai-strategy", "workflow"],
+    relatedIds: ["roi", "ai-strategy", "workflow"],
   },
   {
-    id: "loop-engineering",
-    symbol: "LE",
-    name: "Loop Engineering",
+    id: "roi",
+    symbol: "RI",
+    name: "ROI",
     group: 8,
     row: 2,
     index: 44,
-    tagline: "Design the cycle, not just the prompt",
+    tagline: "Is this worth doing?",
     whatItIs:
-      "Loop engineering is how you design the repeating cycle an AI system runs through — get input, plan, act, check the result, and decide whether to continue or stop. Agents, automations, and even good chat flows depend on this loop being clear, bounded, and observable.",
+      "ROI means return on investment. For AI, it asks a simple question: will this save enough time, make enough money, or reduce enough mistakes to be worth the effort and cost?",
     whenToUse:
-      "Think about loop engineering when an agent gets stuck, repeats itself, burns through API budget, or cannot tell when a job is actually finished.",
+      "Use ROI before you buy a tool, build an agent, or automate a process. It keeps the project tied to a real business result.",
     watchOut:
-      "A loop with no stop condition, no error handling, and no logging will run until it wastes money or breaks something. Design the exit paths before you launch.",
+      "Cool demos can hide weak ROI. If you cannot name the time saved, cost reduced, or revenue helped, the project may be a distraction.",
     links: [
       {
-        label: "Building effective agents",
-        url: "https://www.anthropic.com/engineering/building-effective-agents",
-        icon: "simple-icons/anthropic",
-      },
-      {
-        label: "Thinking in LangGraph",
-        url: "https://docs.langchain.com/oss/python/langgraph/thinking-in-langgraph",
+        label: "AI business use cases",
+        url: "https://www.ibm.com/think/topics/artificial-intelligence-business-use-cases",
       },
     ],
-    relatedIds: ["use-case", "agent", "workflow"],
+    relatedIds: ["use-case", "ai-cost", "ai-strategy"],
   },
   {
-    id: "layer-diagnosis",
-    symbol: "LD",
-    name: "Layer Diagnosis",
+    id: "problem-layer",
+    symbol: "PL",
+    name: "Problem Layer",
     group: 8,
     row: 3,
     index: 45,
-    tagline: "Find which layer is broken",
+    tagline: "Find where the problem really is",
     whatItIs:
-      "Layer diagnosis is the skill of figuring out which part of your AI system is actually causing the problem — the model, the prompt, the data, the workflow, or the business process underneath. Most expensive AI mistakes come from fixing the wrong layer.",
+      "The problem layer is the part of your AI setup that is actually causing trouble. The issue might be the prompt, the data, the model, the tool connection, the workflow, or the business process.",
     whenToUse:
-      "Use layer diagnosis when output is wrong, automation breaks, or the team keeps swapping tools and rewriting prompts without real improvement.",
+      "Use this when AI gives bad answers, an automation breaks, or a team keeps changing tools without fixing the real issue.",
     watchOut:
-      "If you always reach for a new model or a better prompt first, you may be treating a data problem or a workflow problem like a wording problem.",
+      "Do not blame the model first every time. Many AI problems are really missing data, unclear instructions, weak testing, or a messy process.",
     links: [
       {
-        label: "RAG vs fine-tuning",
+        label: "Improve accuracy",
         url: "https://platform.openai.com/docs/guides/optimizing-llm-accuracy",
         icon: "simple-icons/openai",
-      },
-      {
-        label: "AI system layers",
-        url: "https://www.ibm.com/think/topics/large-language-models",
       },
     ],
     relatedIds: ["use-case", "model", "evals"],
@@ -1108,7 +1096,7 @@ export const ELEMENTS: AIElement[] = [
         url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
       },
     ],
-    relatedIds: ["use-case", "loop-engineering", "ai-stack"],
+    relatedIds: ["use-case", "roi", "ai-stack"],
   },
 ];
 

@@ -4,8 +4,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 1,
     label: "G1",
-    name: "Fundamentals",
-    description: "The basics every AI tool uses — tokens, models, prompts, and settings.",
+    name: "AI Basics",
+    description: "The simple building blocks behind every AI tool.",
     color: "#3b82f6",
     glowColor: "rgba(59, 130, 246, 0.55)",
     leverageTier: "foundation",
@@ -13,8 +13,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 2,
     label: "G2",
-    name: "Data & Knowledge",
-    description: "How you give AI your own information to work with.",
+    name: "Your Data",
+    description: "How AI uses your files, notes, and company knowledge.",
     color: "#38bdf8",
     glowColor: "rgba(56, 189, 248, 0.5)",
     leverageTier: "foundation",
@@ -22,8 +22,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 3,
     label: "G3",
-    name: "Intelligence Layer",
-    description: "Making AI smarter, safer, and more useful for real work.",
+    name: "Quality & Safety",
+    description: "How to make AI answers safer, steadier, and easier to trust.",
     color: "#8b5cf6",
     glowColor: "rgba(139, 92, 246, 0.55)",
     leverageTier: "foundation",
@@ -31,9 +31,9 @@ export const GROUPS: AIGroup[] = [
   {
     id: 4,
     label: "G4",
-    name: "Models & Providers",
+    name: "AI Engines",
     description:
-      "The AI engines you pick from — GPT, Claude, Gemini, DeepSeek, and more.",
+      "The model families you can choose from.",
     color: "#e879f9",
     glowColor: "rgba(232, 121, 249, 0.5)",
     leverageTier: "foundation",
@@ -41,8 +41,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 5,
     label: "G5",
-    name: "Infrastructure",
-    description: "How AI connects to your apps and other tools.",
+    name: "Connections",
+    description: "How AI plugs into your apps and tools.",
     color: "#84cc16",
     glowColor: "rgba(132, 204, 22, 0.5)",
     leverageTier: "high",
@@ -50,8 +50,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 6,
     label: "G6",
-    name: "Agents & Automation",
-    description: "AI that takes action — agents, workflows, and automation.",
+    name: "AI Workers",
+    description: "AI that can follow steps, use tools, and get work done.",
     color: "#eab308",
     glowColor: "rgba(234, 179, 8, 0.5)",
     leverageTier: "high",
@@ -59,8 +59,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 7,
     label: "G7",
-    name: "No-Code Builders",
-    description: "Build AI systems without writing much code.",
+    name: "Builder Tools",
+    description: "Tools for building AI systems faster.",
     color: "#6ee7b7",
     glowColor: "rgba(110, 231, 183, 0.45)",
     leverageTier: "high",
@@ -68,8 +68,8 @@ export const GROUPS: AIGroup[] = [
   {
     id: 8,
     label: "G8",
-    name: "Business Layer",
-    description: "Turn AI into a real business — strategy, ROI, and use cases.",
+    name: "Business Decisions",
+    description: "How to decide what is worth building.",
     color: "#fb7185",
     glowColor: "rgba(251, 113, 133, 0.5)",
     leverageTier: "business",

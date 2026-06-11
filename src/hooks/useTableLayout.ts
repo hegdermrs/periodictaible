@@ -16,42 +16,47 @@ export interface TableLayout {
 
 const COLS = 8;
 const ROWS = 6;
-const PAD_X = 56;
-const PAD_Y = 40;
-const FIT = 0.9;
-const HEADER_H = 34;
-const MIN_GAP = 6;
-const MIN_CELL_H = 52;
-const MIN_COL_W = 72;
 
 function compute(cw: number, ch: number, curved: boolean): TableLayout {
-  const availW = Math.max(cw * FIT - PAD_X * 2, 400);
-  const availH = Math.max(ch * FIT - PAD_Y * 2, 300);
+  const mobile = cw < 640;
+  const padX = mobile ? 8 : 56;
+  const padY = mobile ? 18 : 40;
+  const fit = mobile ? 0.98 : 0.9;
+  const headerH = mobile ? 34 : 44;
+  const minGap = mobile ? 4 : 6;
+  const maxGap = mobile ? 6 : 10;
+  const minCellH = mobile ? 42 : 52;
+  const minColW = mobile ? 34 : 72;
+  const minAvailW = mobile ? 280 : 400;
+  const minAvailH = mobile ? 360 : 300;
+
+  const availW = Math.max(cw * fit - padX * 2, minAvailW);
+  const availH = Math.max(ch * fit - padY * 2, minAvailH);
 
   const gap = Math.max(
-    MIN_GAP,
+    minGap,
     Math.min(
-      10,
+      maxGap,
       Math.floor(
         Math.min(
-          (availH - HEADER_H - ROWS * MIN_CELL_H) / (ROWS + 1),
-          (availW - COLS * MIN_COL_W) / (COLS + 1),
+          (availH - headerH - ROWS * minCellH) / (ROWS + 1),
+          (availW - COLS * minColW) / (COLS + 1),
         ),
       ),
     ),
   );
 
   const cellH = Math.max(
-    MIN_CELL_H,
-    Math.floor((availH - HEADER_H - gap - (ROWS - 1) * gap) / ROWS),
+    minCellH,
+    Math.floor((availH - headerH - gap - (ROWS - 1) * gap) / ROWS),
   );
 
   const colW = Math.max(
-    MIN_COL_W,
+    minColW,
     Math.floor((availW - (COLS - 1) * gap) / COLS),
   );
 
-  const tableH = HEADER_H + gap + ROWS * cellH + (ROWS - 1) * gap;
+  const tableH = headerH + gap + ROWS * cellH + (ROWS - 1) * gap;
 
   let tableW: number;
   let radius = 0;
@@ -67,7 +72,7 @@ function compute(cw: number, ch: number, curved: boolean): TableLayout {
     colW,
     cellH,
     gap,
-    headerH: HEADER_H,
+    headerH,
     tableW,
     tableH,
     radius,
